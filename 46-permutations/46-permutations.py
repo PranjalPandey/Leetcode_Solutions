@@ -5,6 +5,7 @@ class Solution:
         if i>=len(nums):
             ans.append(nums.copy())
             return
+        #J signifies number of nodes and i signifies number of level of the recursion tree
         for j in range(i,len(nums)):
             nums[i],nums[j]=nums[j],nums[i]
             self.make_permutations(ans,nums,i+1)
