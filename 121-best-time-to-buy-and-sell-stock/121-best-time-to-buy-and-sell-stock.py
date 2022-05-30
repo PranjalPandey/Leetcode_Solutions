@@ -1,5 +1,9 @@
-class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
         if not prices:
             return 0
         min_price = prices[0]
@@ -10,4 +14,3 @@ class Solution:
             if max_so_far<(price-min_price):
                 max_so_far = (price-min_price)
         return max_so_far
-                
