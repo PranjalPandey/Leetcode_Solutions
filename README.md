@@ -1,2 +1,2 @@
 # Leetcode_Solutions
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub)
+Collection of LeetCode questions to ace the coding interview! - Including questions from Grind75, Blind75 and Neetcode/
