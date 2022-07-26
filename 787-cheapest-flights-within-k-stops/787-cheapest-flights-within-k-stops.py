@@ -1,5 +1,7 @@
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+
+#DFS with Prunning
 #         graph = defaultdict(dict)
         
 #         for s,d,p in flights:
@@ -24,17 +26,36 @@ class Solution:
 #         if fare==10**9:
 #             return -1
 #         return fare
-        prices = [float("inf")]*n
-        prices[src] = 0
-        for node in range(k+1):
-            temp = prices.copy()
-            for s,d,p in flights:
-                if prices[s] == float("inf"):
-                    continue
-                if prices[s]+p<temp[d]:
-                    temp[d] = prices[s]+p
-            prices = temp
-        return -1 if prices[dst]==float("inf") else prices[dst]
+
+# Bellman Ford
+        # prices = [float("inf")]*n
+        # prices[src] = 0
+        # for node in range(k+1):
+        #     temp = prices.copy()
+        #     for s,d,p in flights:
+        #         if prices[s] == float("inf"):
+        #             continue
+        #         if prices[s]+p<temp[d]:
+        #             temp[d] = prices[s]+p
+        #     prices = temp
+        # return -1 if prices[dst]==float("inf") else prices[dst]
+        
+#Dijkstra algorithm
+        graph = collections.defaultdict(dict)
+        for s, d, w in flights:
+            graph[s][d] = w
+        pq = [(0, src, k+1)]
+        vis = [0] * n
+        while pq:
+            w, x, k = heapq.heappop(pq)
+            if x == dst:
+                return w
+            if vis[x] >= k:
+                continue
+            vis[x] = k
+            for y, dw in graph[x].items():
+                heapq.heappush(pq, (w+dw, y, k-1))
+        return -1
                     
 
 
