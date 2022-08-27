@@ -9,6 +9,7 @@ class Solution:
         #     s=s[1:]+s[0]
         #     count-=1
         # return False
+
         s+=s
         if goal in s:
             return True
